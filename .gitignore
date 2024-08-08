@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+.logs/
 .Python
 build/
 develop-eggs/
@@ -36,6 +37,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 access_keys.txt
+credentials.txt
 
 # Unit test / coverage reports
 htmlcov/

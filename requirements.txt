@@ -2,4 +2,7 @@ pandas
 numpy
 tweepy
 s3fs
+#facebook
+#faecbook_business
 ##airflow
+instaloader
