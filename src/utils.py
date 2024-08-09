@@ -1,7 +1,11 @@
+import os
 import sys
 import tweepy
 from exceptions import CustomException
 from logger import logging
+
+print(os.getcwd())
+print(sys.path)
 
 class Connect():
     def __init__(self,access_key,access_secret,consumer_key,consumer_secret):

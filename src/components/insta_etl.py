@@ -1,20 +1,22 @@
+import os
 import instaloader
 import pandas as pd
+import sys
+sys.path.insert(0, 'E:/Projects/Airflow/src')  # Adding the src directory to sys.path
 from utils import data_input
 from exceptions import CustomException
 from logger import logging
-import sys
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 from Keys import APIKeys 
 # Creating an instance of the Instaloader class
 bot = instaloader.Instaloader()
- 
+
 # Loading a profile from an Instagram handle
 di = data_input()
 usernames = di.read_usernames(r"E:\Projects\Airflow\usernames.csv")
 #print (usernames)
-
+#usernames = usernames[0:30]
 keys_instance = APIKeys("E:\Projects\Airflow\credentials.txt")
 keys = keys_instance.get_keys()
 
@@ -52,7 +54,11 @@ except Exception as e:
 # Filter out None results
 results = [r for r in results if r is not None]
 
-# Create DataFrame
 df = pd.DataFrame(results)
 
+file_path = "user_info.csv"
+if os.path.exists(file_path):
+    df.to_csv(file_path, mode='a', header=False, index=False)
+else:
+    df.to_csv(file_path, mode='w', header=True, index=False)
 print(df.head(10))
