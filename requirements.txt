@@ -6,3 +6,4 @@ s3fs
 #faecbook_business
 ##airflow
 instaloader
+apache-airflow
